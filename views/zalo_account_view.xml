@@ -4,9 +4,7 @@
         <field name="model">zalo.account</field>
         <field name="arch" type="xml">
             <form string="Manager Account">
-
                 <sheet>
-
                     <group>
                         <field name="app_id"/>
                         <field name="access_token"/>
@@ -15,20 +13,18 @@
                         <field name="token_expiration"/>
                     </group>
                     <button string="New Token" type="object" name="action_token_new" class="btn-primary"/>
-
                     <notebook colspan="1">
                         <page string="Account Information" name="account_info">
                             <group>
                                 <field name="name" />
                             </group>
                         </page>
-
-
                     </notebook>
                 </sheet>
             </form>
         </field>
     </record>
+
 
     <record id="manager_account_kanban" model="ir.ui.view">
         <field name="name">zalo.account.kanban</field>
@@ -59,6 +55,7 @@
         </field>
     </record>
 
+
     <record id="manager_account_tree" model="ir.ui.view">
         <field name="name">zalo.account.tree</field>
         <field name="model">zalo.account</field>
@@ -70,6 +67,7 @@
         </field>
     </record>
     
+
     <record id="action_zalo_account" model="ir.actions.act_window">
         <field name="name">Tài khoản</field>
         <field name="res_model">zalo.account</field>
@@ -83,5 +81,4 @@
             </p>
         </field>
     </record>
-    
 </odoo>

@@ -1,5 +1,4 @@
 <odoo>
-    
     <record id="view_zalo_video_form" model="ir.ui.view">
         <field name="name">zalo.video.form</field>
         <field name="model">zalo.video</field>
@@ -18,10 +17,7 @@
                         <field name="app_secret"/>
                         <field name="token_expiration"/>
                     </group>
-
-                    
                     <button string="Prepare Video Upload" type="object" name="action_upload_video" class="btn-primary"/>
-
                 </sheet>
             </form>
         </field>
@@ -45,6 +41,11 @@
         <field name="name">Zalo Video</field>
         <field name="res_model">zalo.video</field>
         <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Hãy thêm một video
+            </p>
+        </field>
     </record>
 
     <!-- Define the menu item for Zalo Posts -->

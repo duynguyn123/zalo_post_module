@@ -2,7 +2,7 @@ from datetime import timedelta
 import logging
 from urllib.parse import urlencode
 import requests
-from odoo import models, fields, api
+from odoo import models, fields, api # type: ignore
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -78,7 +78,7 @@ class ZaloPost(models.Model):
         # Prepare the body based on the user's selection of content type
         body_content = [{
                 "type": "text",
-                "content": self.description or "Default text content"
+                "content": self.description
             }]
         
         # if self.body_type == 'text':
@@ -104,7 +104,7 @@ class ZaloPost(models.Model):
             "app_id": self.app_id,
             "app_secret": self.app_secret,
             "type": "normal",
-            "title": self.title or "News",
+            "title": self.title,
             "author": "News",
             "cover": {
                 "cover_type": "photo",
@@ -156,6 +156,12 @@ class ZaloPost(models.Model):
                 record.action_post_feed()  # Call the post feed action
                 record.is_posted = True  # Mark as posted
                 _logger.info(f"Successfully posted feed for record {record.id}")
+                
+                self.env.user.notify_info(
+                    message=f"Successfully posted feed for record {record.id}",
+                    title="Success",
+                    sticky=False
+                )
             except Exception as e:
                 _logger.error(f"Failed to post feed for record {record.id}: {e}")
     

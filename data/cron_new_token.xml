@@ -1,5 +1,3 @@
-
-
 <odoo>
     <data noupdate="1">
         <record id="ir_cron_check_token_expiration" model="ir.cron">
@@ -13,5 +11,4 @@
         <field name="active" eval="True"/>
     </record>
     </data>
-    
 </odoo>

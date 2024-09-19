@@ -1,6 +1,4 @@
 <odoo>
-
-        
     <data>
         <record id="action_zalo_post" model="ir.actions.act_window">
             <field name="name">Zalo Posts</field>
@@ -13,12 +11,12 @@
         name="Zalo Marketing" 
         sequence="0"/>
 
-
          <menuitem 
         id="zalo_group" 
         parent="MarketingContent.menu_config"
         name="Zalo Manager" 
         />
+
         <menuitem
         id="menu_zalo_post"
         parent="menu_zalo_marketing_root" 
@@ -53,16 +51,5 @@
         name="Manager Zalo Post" 
         sequence="43" 
         action="action_zalo_post"/>
-        
-
-    
-
-
-
-
-
-
-
-
     </data>
 </odoo>

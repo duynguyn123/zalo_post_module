@@ -4,7 +4,7 @@
     'summary': 'Post articles to Zalo Official Account (OA)',
     'author': 'Your Name',
     'category': 'Social',
-    'depends': ['base','website_sale','Maketing_Content'],
+    'depends': ['base','website_sale','MarketingContent'],
     'data': [
         'security/ir.model.access.csv',
         'views/zalo_post_views.xml',

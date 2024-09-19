@@ -1,5 +1,4 @@
 <odoo>
-
     <record id="inherited_module_form_view" model="ir.ui.view">
         <field name="name">inherited.module.form.view</field>
         <field name="model">marketing.content</field>

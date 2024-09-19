@@ -21,10 +21,7 @@ class MarketingContent(models.Model):
                 "description": record.content,  
                 "title": record.content
             })
-        
         return record
-
-
 
 # Kế thừa Marketing Product
 class MarketingProduct(models.Model):

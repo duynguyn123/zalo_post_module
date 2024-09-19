@@ -3,15 +3,13 @@ import requests
 from odoo import models, fields, _ # type: ignore
 import logging
 _logger = logging.getLogger(__name__)
-
 from datetime import timedelta
+
 
 class ZaloAccount(models.Model):
     _name = 'zalo.account'
     _description = 'Zalo Account'
-
     is_favorite = fields.Boolean(string="Favorite", default=False, tracking=True)
-
     name = fields.Char('Tên tài khoản', required=True)
     app_id = fields.Char('App ID', required=True)
     app_secret = fields.Char('App Secret', required=True)
@@ -34,14 +32,11 @@ class ZaloAccount(models.Model):
         }
         urlencoded_data = urlencode(payload)
         _logger.info(f"{urlencoded_data} ")
-
         response = session.post(url, headers=headers, data=urlencoded_data)
-
         if response.status_code == 200:
             return response.json()
         else:
             return {"error": response.status_code, "message": response.text}
-
 
     # Gán các giá trị mới vào fields
     def action_token_new(self):
@@ -67,7 +62,7 @@ class ZaloAccount(models.Model):
         expiration_duration = timedelta(seconds=9000)  # 9000 seconds = 2h30p
         for record in self.search([('token_expiration', '!=', False)]):
             if now - record.token_expiration >= expiration_duration:
-                # Log the expired token or send a notification
+                # Log cho biết token hết hạn
                 _logger.warning(f"Token for account {record.name} has expired.")
                 # You can send notifications or trigger an email here
 
