@@ -16,7 +16,7 @@
 
          <menuitem 
         id="zalo_group" 
-        parent="MarketingContent.menu_config"
+        parent="Maketing_Content.menu_config"
         name="Zalo Manager" 
         />
         <menuitem
