@@ -19,7 +19,7 @@
                     <notebook colspan="1">
                         <page string="Account Information" name="account_info">
                             <group>
-                                <field name="name" readonly="1"/>
+                                <field name="name" />
                             </group>
                         </page>
 
