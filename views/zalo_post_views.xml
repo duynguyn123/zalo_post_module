@@ -1,0 +1,86 @@
+<odoo>
+    
+    <record id="view_zalo_post_form" model="ir.ui.view">
+        <field name="name">zalo.post.form</field>
+        <field name="model">zalo.post</field>
+        <field name="arch" type="xml">
+            <form string="Zalo Post">
+                <sheet>
+                    <group>
+                        <field name="title"/>
+                        <field name="description"/>
+                        <field name="cover_url"/>
+                    </group>
+                    <group>
+                        <field name="account_id"/>
+                        <field name="schedule_date" widget="datetime" />
+                    </group>
+                    
+                    <button name="action_post_feed" type="object" string="Post to Zalo" class="oe_highlight"/>
+
+                    <notebook>
+
+
+                        <page name="Post" string="Body Content">
+                            <!-- Field for selecting the type of content -->
+                            <!-- <field name="body_type"/> -->
+                            
+                            <!-- Text content input, shown when the selected type is 'text' -->
+                            <!-- <field name="text_content" mode="invisible" deps="body_type === 'text'"/> -->
+
+                            <!-- Image URL input, shown when the selected type is 'image' -->
+                            <!-- <field name="image_url" mode="invisible" deps="body_type === 'image'"/> -->
+
+                            <!-- Video URL input, shown when the selected type is 'video' -->
+                            <!-- <field name="video_url" mode="invisible" deps="body_type === 'video'"/> -->
+                        </page>
+
+                        
+                        <page name="videoPost" string="Chose Video">
+                            <group>
+                            <field name="videoID"></field>
+                                <field name="video_id"></field>
+                                <field name="video_filename"></field>
+                                <field name="videoToken"></field>
+                            </group>
+                        </page>
+                        <page string="prepare video">
+                            
+                        </page>
+                        <!-- <page name="Postv1" string="Prepare Video">
+                            <group>
+                                <field name="video_filename"/>
+                                <field name="video_file" filename="video_filename"/>
+                            </group>
+                            <button string="Prepare Video Upload" type="object" name="prepare_video_upload" class="btn-primary"/>
+                        </page> -->
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Define the Zalo Post tree view -->
+    <record id="view_zalo_post_tree" model="ir.ui.view">
+        <field name="name">zalo.post.tree</field>
+        <field name="model">zalo.post</field>
+        <field name="arch" type="xml">
+            <tree string="Zalo Posts">
+                <field name="title"/>
+                <field name="description"/>
+                <field name="schedule_date" widget="datetime" />
+                <field name="is_posted"/>
+                <button name="action_post_feed" type="object" string="Post to Zalo" class="oe_highlight"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Define the action for Zalo Posts -->
+    <record id="action_zalo_post" model="ir.actions.act_window">
+        <field name="name">Zalo Posts</field>
+        <field name="res_model">zalo.post</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Define the menu item for Zalo Posts -->
+</odoo>

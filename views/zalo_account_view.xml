@@ -1,0 +1,87 @@
+<odoo>
+    <record id="view_manager_account_form" model="ir.ui.view">
+        <field name="name">zalo.account.form</field>
+        <field name="model">zalo.account</field>
+        <field name="arch" type="xml">
+            <form string="Manager Account">
+
+                <sheet>
+
+                    <group>
+                        <field name="app_id"/>
+                        <field name="access_token"/>
+                        <field name="refresh_token"></field>
+                        <field name="app_secret"/>
+                        <field name="token_expiration"/>
+                    </group>
+                    <button string="New Token" type="object" name="action_token_new" class="btn-primary"/>
+
+                    <notebook colspan="1">
+                        <page string="Account Information" name="account_info">
+                            <group>
+                                <field name="name" readonly="1"/>
+                            </group>
+                        </page>
+
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="manager_account_kanban" model="ir.ui.view">
+        <field name="name">zalo.account.kanban</field>
+        <field name="model">zalo.account</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="is_favorite"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record">
+                            <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('manager.account', 'account_avatar', record.id.raw_value)}')"/>
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_record_title">
+                                            <field name="name"/>
+                                        </strong>
+                                    </div>
+                                    <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="manager_account_tree" model="ir.ui.view">
+        <field name="name">zalo.account.tree</field>
+        <field name="model">zalo.account</field>
+        <field name="arch" type="xml">
+            <tree string="Tài khoản" create="1" delete="1" edit="0">
+                <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
+                <field name="name" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="action_zalo_account" model="ir.actions.act_window">
+        <field name="name">Tài khoản</field>
+        <field name="res_model">zalo.account</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="manager_account_kanban"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Hãy thêm một tài khoản
+            </p>
+        </field>
+    </record>
+    
+</odoo>
