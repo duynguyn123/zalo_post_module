@@ -12,7 +12,7 @@
                         <field name="videoToken"></field>
                     </group>
                     <group>
-                        <field name="account_id"/>
+                        <field name="zalo_app_id"/>
                         <field name="app_id"/>
                         <field name="app_secret"/>
                         <field name="token_expiration"/>

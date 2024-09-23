@@ -1,24 +1,35 @@
 <odoo>
-    <record id="view_manager_account_form" model="ir.ui.view">
-        <field name="name">zalo.account.form</field>
-        <field name="model">zalo.account</field>
+    <record id="view_manager_app_form" model="ir.ui.view">
+        <field name="name">zalo.app.form</field>
+        <field name="model">zalo.app</field>
         <field name="arch" type="xml">
             <form string="Manager Account">
                 <sheet>
                     <group>
-                        <field name="account_id"/>
-                        <field name="account_type"></field>
-                        <field name="name" />
+                        <field name="app_id"/>
+                        <field name="access_token"/>
+                        <field name="refresh_token"></field>
+                        <field name="app_secret"/>
+                        <field name="token_expiration"/>
                     </group>
+                    <button string="New Token" type="object" name="action_token_new" class="btn-primary"/>
+                    <notebook colspan="1">
+                        <page string="Account Information" name="account_info">
+                            <group>
+                                <field name="name" />
+                                <field name="zalo_account_id"></field>
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
     </record>
 
 
-    <record id="manager_account_kanban" model="ir.ui.view">
-        <field name="name">zalo.account.kanban</field>
-        <field name="model">zalo.account</field>
+    <record id="manager_app_kanban" model="ir.ui.view">
+        <field name="name">zalo.app.kanban</field>
+        <field name="model">zalo.app</field>
         <field name="arch" type="xml">
             <kanban>
                 <field name="id"/>
@@ -46,9 +57,9 @@
     </record>
 
 
-    <record id="manager_account_tree" model="ir.ui.view">
-        <field name="name">zalo.account.tree</field>
-        <field name="model">zalo.account</field>
+    <record id="manager_app_tree" model="ir.ui.view">
+        <field name="name">zalo.app.tree</field>
+        <field name="model">zalo.app</field>
         <field name="arch" type="xml">
             <tree string="Tài khoản" create="1" delete="1" edit="0">
                 <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
@@ -58,16 +69,16 @@
     </record>
     
 
-    <record id="action_zalo_account" model="ir.actions.act_window">
+    <record id="action_zalo_app" model="ir.actions.act_window">
         <field name="name">Tài khoản</field>
-        <field name="res_model">zalo.account</field>
+        <field name="res_model">zalo.app</field>
         <field name="view_mode">kanban,tree,form</field>
         <field name="view_id" ref="manager_account_kanban"/>
         <field name="domain">[]</field>
         <field name="context">{}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Hãy thêm một tài khoản
+                Hãy thêm một ứng dụng
             </p>
         </field>
     </record>

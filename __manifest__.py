@@ -10,10 +10,11 @@
         'views/zalo_post_views.xml',
         'data/cron_new_token.xml',
         'data/cron_post_feed.xml',
+        'views/zalo_app_view.xml',
         'views/zalo_account_view.xml',
         'views/zalo_post_video.xml',
         'views/inherit_marketing_content.xml',
-        'views/zalo_post_action.xml',
+        'views/menu_view.xml',
 
     ],
     'installable': True,

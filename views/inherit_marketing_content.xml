@@ -5,7 +5,7 @@
         <field name="inherit_id" ref="MarketingContent.view_marketing_content_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="New Tab">
+                <page string="Zalo post">
                     <field name="zalo_post"/>
                 </page>
             </xpath>
@@ -20,7 +20,7 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet//div[1]" position="inside">
                 <notebook>
-                    <page string="New Tab">
+                    <page string="Zalo post">
                     <field name="zalo_post"/>
                 </page>
                 </notebook>
@@ -39,4 +39,5 @@
             </xpath>
         </field>
     </record> -->
+
 </odoo>

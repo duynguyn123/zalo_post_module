@@ -6,17 +6,22 @@
             <form string="Zalo Post">
                 <sheet>
                     <group>
-                        <field name="title"/>
-                        <field name="description"/>
+                        <!-- <field name="title"/>
+                        <field name="description"/> -->
                         <field name="cover_url"/>
                     </group>
                     <group>
-                        <field name="account_id"/>
+                        <field name="zalo_app_id"/>
+                        <field name="zalo_account"></field>
                         <field name="schedule_date" widget="datetime" />
+
                     </group>
                     
-                    <button name="action_post_feed" type="object" string="Post to Zalo" class="oe_highlight"/>
-
+                    <!-- <button name="action_post_feed" type="object" string="Post to Zalo" class="oe_highlight"/> -->
+                     <!-- Replacing button with a checkbox -->
+                    <group>
+                        <field name="is_post_to_zalo" string="Post to Zalo"/>
+                    </group>
                     <notebook>
 
 
@@ -46,13 +51,7 @@
                         <page string="prepare video">
                             
                         </page>
-                        <!-- <page name="Postv1" string="Prepare Video">
-                            <group>
-                                <field name="video_filename"/>
-                                <field name="video_file" filename="video_filename"/>
-                            </group>
-                            <button string="Prepare Video Upload" type="object" name="prepare_video_upload" class="btn-primary"/>
-                        </page> -->
+
                     </notebook>
                 </sheet>
             </form>

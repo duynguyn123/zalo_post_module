@@ -10,38 +10,51 @@ class ZaloPost(models.Model):
     _name = 'zalo.post'
     _description = 'Zalo Post'
 
-    # Gọi từ module account
-    app_id = fields.Char(related="account_id.app_id", string='App ID')
-    app_secret = fields.Char(related='account_id.app_secret', string='App Secret')
-    access_token = fields.Char(related='account_id.access_token', string='Access Token')
-    refresh_token = fields.Char(related='account_id.refresh_token', string='Refresh Token')
-    token_expiration = fields.Datetime(related='account_id.token_expiration', string='Token Expiration')
-
+    # Gọi từ module zalo app
+    app_id = fields.Char(related="zalo_app_id.app_id", string='App ID')
+    app_secret = fields.Char(related='zalo_app_id.app_secret', string='App Secret')
+    access_token = fields.Char(related='zalo_app_id.access_token', string='Access Token')
+    refresh_token = fields.Char(related='zalo_app_id.refresh_token', string='Refresh Token')
+    token_expiration = fields.Datetime(related='zalo_app_id.token_expiration', string='Token Expiration')
+    zalo_account = fields.Many2one(related='zalo_app_id.zalo_account_id', string = "Zalo Account")
 
     # Gọi từ module video
+    video_file = fields.Binary(related='videoID.video_file', string = "Video file")
     video_filename = fields.Char(related='videoID.video_filename', string = 'File Name')
     videoToken = fields.Char(related='videoID.videoToken', string = 'Video Token')
     video_id = fields.Char(related='videoID.video_id', string="Video ID")
 
+    # Gọi từ module marketing content
+    title = fields.Text(related='content_id.content', string='Title')
+    description = fields.Text(related='content_id.content', string='Description')
+    image_ids = fields.One2many(related='content_id.image_ids')
 
     # model gốc
     schedule_date = fields.Datetime(string="Scheduled Date", help="Choose the date and time to schedule the post.")
-    title = fields.Char(string='Title')
-    description = fields.Text(string='Description')
-    cover_url = fields.Char(string='Cover URL')
-    body_content = fields.Html(string='Body Content')
+    is_post_to_zalo = fields.Boolean("Post to Zalo", default=False)
+    cover_url = fields.Char(string='Cover URL',compute="_depend_cover_url")
     is_posted = fields.Boolean(string="Is Post")
 
-
     # Kết nối các models lại với nhau
-    zalo_post_id = fields.Many2one('zalo.video', string = "Zalo Post")
     content_id = fields.Many2one('marketing.content'  , string='Marketing Content')
     marketing_product_id = fields.Many2one('marketing.product', string = "Product") 
-    account_id = fields.Many2one('zalo.account', string = "Zalo Account")
+    zalo_app_id = fields.Many2one('zalo.app', string = "Zalo App")
+    account_id = fields.Many2one('zalo.account')
     videoID = fields.Many2one('zalo.video', string = "Zalo Video Upload")
-    content = fields.Many2one('marketing.content', string = "Marketing Content")
     
-    
+
+
+    # Lấy url hình ảnh đầu tiên của content
+    @api.depends("image_ids")
+    def _depend_cover_url(self):
+        for record in self:
+            if record.image_ids:  # Kiểm tra xem danh sách không rỗng
+                if record.image_ids[0].id:  # Kiểm tra ID đã được xác định
+                    record.cover_url = "http://localhost:8069/web/image?model=marketing.content.image&id=%d&field=image" % record.image_ids[0].id
+                else:
+                    record.cover_url = ""  # Rỗng nếu nếu ID không hợp lệ
+
+
     # # Add selection for the content type
     # body_type = fields.Selection([
     #     ('text', 'Text'),
@@ -54,13 +67,25 @@ class ZaloPost(models.Model):
     # image_url = fields.Char(string='Image URL')
     # video_url = fields.Char(string='Video URL')
 
-
-    @api.onchange('content_id')
-    def _onchange_content_id(self):
-        """Lấy giá trị title và content từ module gốc khi content_id thay đổi."""
-        if self.content_id:
-            self.title = self.content_id.content
-            self.description = self.content_id.content
+    def create(self, vals):
+        record = super(ZaloPost, self).create(vals)
+        if record.is_post_to_zalo:
+            record.action_post_feed()
+        return record
+    
+    def write(self, vals):
+        res = super(ZaloPost, self).write(vals)
+        for record in self:
+            if record.is_post_to_zalo and not record.is_posted:
+                self.action_post_feed()
+        return res
+    
+    # @api.onchange('content_id')
+    # def _onchange_content_id(self):
+    #     """Lấy giá trị title và content từ module gốc khi content_id thay đổi."""
+    #     if self.content_id:
+    #         self.title = self.content_id.content
+    #         self.description = self.content_id.content
 
     @api.model
     def post_feed(self):
@@ -79,6 +104,10 @@ class ZaloPost(models.Model):
         body_content = [{
                 "type": "text",
                 "content": self.description
+            },
+            {
+                "type": "image",
+                "url": self.cover_url
             }]
         
         # if self.body_type == 'text':
@@ -108,13 +137,13 @@ class ZaloPost(models.Model):
             "author": "News",
             "cover": {
                 "cover_type": "photo",
-                "photo_url": self.cover_url or "https://img.freepik.com/free-vector/gradient-dynamic-blue-lines-background_23-2148995756.jpg",
+                "photo_url": self.cover_url,
                 "status": "show"
             },
             "description": [
                 {
                     "type": "image",
-                    "url": self.cover_url or "https://img.freepik.com/free-vector/gradient-dynamic-blue-lines-background_23-2148995756.jpg",
+                    "url": self.cover_url,
                     "caption": "News"
                 }
             ],
@@ -133,15 +162,6 @@ class ZaloPost(models.Model):
         else:
             response.raise_for_status()  # Raise an exception for any errors
 
-
-    # def schedule_post_feed(self):
-    #     # Fetch records with a schedule time that is due
-    #     records = self.search([('next_run_date', '<=', fields.Datetime.now())])
-    #     for record in records:
-    #         record.action_post_feed()
-    #         # Update the next run date, e.g., to run again in 1 hour
-    #         record.next_run_date = fields.Datetime.now() + timedelta(hours=1)
-
     def action_post_feed(self):
         response_feed = self.post_feed()
         return response_feed
@@ -156,7 +176,7 @@ class ZaloPost(models.Model):
                 record.action_post_feed()  # Call the post feed action
                 record.is_posted = True  # Mark as posted
                 _logger.info(f"Successfully posted feed for record {record.id}")
-                
+
                 self.env.user.notify_info(
                     message=f"Successfully posted feed for record {record.id}",
                     title="Success",
