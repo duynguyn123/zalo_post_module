@@ -51,7 +51,7 @@ class ZaloPost(models.Model):
         for record in self:
             if record.image_ids:  # Kiểm tra xem danh sách không rỗng
                 if record.image_ids[0].id:  # Kiểm tra ID đã được xác định
-                    record.cover_url = "http://localhost:8069/web/image?model=marketing.content.image&id=%d&field=image" % record.image_ids[0].id
+                    record.cover_url = "http://mtk00.t4tek.tk/web/image?model=marketing.content.image&id=%d&field=image" % record.image_ids[0].id
                 else:
                     record.cover_url = ""  # Rỗng nếu nếu ID không hợp lệ
 
