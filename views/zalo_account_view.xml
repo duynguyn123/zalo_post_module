@@ -9,6 +9,9 @@
                         <field name="account_id"/>
                         <field name="account_type"></field>
                         <field name="name" />
+                        <field name="image_url" widget="image" />
+
+
                     </group>
                 </sheet>
             </form>

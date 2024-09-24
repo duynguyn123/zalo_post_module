@@ -13,34 +13,18 @@
                     <group>
                         <field name="zalo_app_id"/>
                         <field name="zalo_account"></field>
-                        <field name="schedule_date" widget="datetime" />
-
+                        <field name="schedule_date" widget="datetime" invisible="is_post_to_zalo" />
                     </group>
+
                     
                     <!-- <button name="action_post_feed" type="object" string="Post to Zalo" class="oe_highlight"/> -->
                      <!-- Replacing button with a checkbox -->
                     <group>
                         <field name="is_post_to_zalo" string="Post to Zalo"/>
+                        <field name="have_video" />
                     </group>
-                    <notebook>
-
-
-                        <page name="Post" string="Body Content">
-                            <!-- Field for selecting the type of content -->
-                            <!-- <field name="body_type"/> -->
-                            
-                            <!-- Text content input, shown when the selected type is 'text' -->
-                            <!-- <field name="text_content" mode="invisible" deps="body_type === 'text'"/> -->
-
-                            <!-- Image URL input, shown when the selected type is 'image' -->
-                            <!-- <field name="image_url" mode="invisible" deps="body_type === 'image'"/> -->
-
-                            <!-- Video URL input, shown when the selected type is 'video' -->
-                            <!-- <field name="video_url" mode="invisible" deps="body_type === 'video'"/> -->
-                        </page>
-
-                        
-                        <page name="videoPost" string="Chose Video">
+                    <notebook>                 
+                        <page name="videoPost" string="Chose Video" visible="have_video" >
                             <group>
                             <field name="videoID"></field>
                                 <field name="video_id"></field>
@@ -48,9 +32,7 @@
                                 <field name="videoToken"></field>
                             </group>
                         </page>
-                        <page string="prepare video">
-                            
-                        </page>
+
 
                     </notebook>
                 </sheet>
@@ -64,7 +46,7 @@
         <field name="model">zalo.post</field>
         <field name="arch" type="xml">
             <tree string="Zalo Posts">
-                <field name="title"/>
+                <field name="name"/>
                 <field name="description"/>
                 <field name="schedule_date" widget="datetime" />
                 <field name="is_posted"/>

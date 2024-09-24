@@ -7,17 +7,20 @@
                 <sheet>
                     <group>
                         <field name="video_file"/>
-                        <field name="video_filename"/>
+                        <field name="name"/>
                         <field name="video_id"/>
                         <field name="videoToken"></field>
                     </group>
                     <group>
                         <field name="zalo_app_id"/>
-                        <field name="app_id"/>
+                        <!-- <field name="app_id"/>
                         <field name="app_secret"/>
-                        <field name="token_expiration"/>
+                        <field name="token_expiration"/> -->
                     </group>
-                    <button string="Prepare Video Upload" type="object" name="action_upload_video" class="btn-primary"/>
+                    <button string="Upload Video" type="object" name="action_upload_video" class="btn-primary "/>
+                    <button string="Verify Video" type="object" name="action_verify_video" class="btn-warning"/>
+
+
                 </sheet>
             </form>
         </field>
@@ -30,7 +33,7 @@
         <field name="arch" type="xml">
             <tree string="Zalo Video">
                 <field name="video_file"/>
-                <field name="video_filename"/>
+                <field name="name"/>
                 <field name="video_id"/>
             </tree>
         </field>
