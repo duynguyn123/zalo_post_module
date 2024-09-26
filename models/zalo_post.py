@@ -84,7 +84,10 @@ class ZaloPost(models.Model):
         }
 
         # Prepare the body based on the user's selection of content type
-        body_content = [{
+        body_content = []
+        
+        if self.have_video:
+            body_content.append({
                 "type": "video",
                 "video_id": self.video_id
             },
@@ -95,30 +98,16 @@ class ZaloPost(models.Model):
             {
                 "type": "image",
                 "url": self.cover_url
-            }]
-        
-        # if self.have_video:
-        #     body_content.append({
-        #         "type": "video",
-        #         "video_id": self.video_id
-        #     },
-        #     {
-        #         "type": "text",
-        #         "content": self.description
-        #     },
-        #     {
-        #         "type": "image",
-        #         "url": self.cover_url
-        #     })
-        # elif self.have_video == False:
-        #     body_content.append({
-        #         "type": "text",
-        #         "content": self.description
-        #     },
-        #     {
-        #         "type": "image",
-        #         "url": self.cover_url
-        #     })
+            })
+        elif self.have_video == False:
+            body_content.append({
+                "type": "text",
+                "content": self.description
+            },
+            {
+                "type": "image",
+                "url": self.cover_url
+            })
 
         # Payload containing app_id, app_secret, message, and link
         payload = {
