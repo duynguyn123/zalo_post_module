@@ -4,12 +4,19 @@
         <field name="model">zalo.account</field>
         <field name="arch" type="xml">
             <form string="Manager Account">
+
                 <sheet>
+                <button name="action_take_url_image" type="object" string="Load Infomation" class="oe_highlight"/>
+
                     <group>
                         <field name="account_id"/>
-                        <field name="account_type"></field>
                         <field name="name" />
-                        <field name="image_url" widget="image" />
+                        <field name="description"/>
+                        <field name="cate_name"/>
+                        <field name="package_name"/>
+                        <field name="avatar_url"/>
+                        <field name="num_follower"/>
+                        <field name="zalo_app"></field>
 
 
                     </group>
@@ -30,7 +37,7 @@
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record">
-                            <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('zalo.account', 'image_url', record.id.raw_value)}')"/>
+                            <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('zalo.account', 'avatar_url', record.id.raw_value)}')"/>
                             <div class="oe_kanban_details">
                                 <div class="o_kanban_record_top">
                                     <div class="o_kanban_record_headings">

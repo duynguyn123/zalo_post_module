@@ -6,11 +6,12 @@
             <form string="Manager Account">
                 <sheet>
                     <group>
+                        <field name="token_expiration"/>
                         <field name="app_id"/>
                         <field name="access_token"/>
                         <field name="refresh_token"></field>
                         <field name="app_secret"/>
-                        <field name="token_expiration"/>
+                        <field name="image_app" widget="image" />
                     </group>
                     <button string="New Token" type="object" name="action_token_new" class="btn-primary"/>
                     <notebook colspan="1">

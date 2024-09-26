@@ -16,6 +16,7 @@ class ZaloAccount(models.Model):
     access_token = fields.Char('Access Token')
     refresh_token = fields.Char('Refresh Token')
     token_expiration = fields.Datetime('Token Expiration')
+    image_app = fields.Binary('Image App')
 
     zalo_account_id = fields.Many2one('zalo.account')
 
@@ -75,3 +76,6 @@ class ZaloAccount(models.Model):
                 )
                 # Optionally, call action_token_new() to refresh the token automatically
                 record.action_token_new()
+
+    
+        
