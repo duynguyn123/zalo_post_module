@@ -44,7 +44,8 @@
         name="Manager Zalo Account" 
         parent="zalo_group" 
         action="action_zalo_account"
-        sequence="40"/>
+        sequence="40"
+        group=""/>
 
         <menuitem
         id="menu_zalo_postv2"
