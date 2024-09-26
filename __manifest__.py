@@ -6,7 +6,7 @@
     'category': 'Social',
     'depends': ['base','website_sale','MarketingContent'],
     'data': [
-        'security/ir.model.access.csv',
+        # 'security/security.xml',
         'views/zalo_post_views.xml',
         'data/cron_new_token.xml',
         'data/cron_post_feed.xml',
@@ -14,6 +14,8 @@
         'views/zalo_account_view.xml',
         'views/zalo_post_video.xml',
         'views/inherit_marketing_content.xml',
+        'security/ir.model.access.csv',
+
         'views/menu_view.xml',
 
     ],

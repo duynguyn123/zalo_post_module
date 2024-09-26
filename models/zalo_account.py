@@ -14,7 +14,7 @@ class ZaloAccount(models.Model):
     name = fields.Char('Tên tài khoản', required=True)
     account_id = fields.Char('App ID', required=True)
     account_type = fields.Char('Danh mục', required=True)
-    image_url = fields.Char('Url Image')
+    image_url = fields.Char('Account Image')
 
 
 

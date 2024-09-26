@@ -85,10 +85,10 @@ class ZaloPost(models.Model):
 
         # Prepare the body based on the user's selection of content type
         body_content = [
-            {
-                "type": "video",
-                "video_id": self.video_id
-            },
+            # {
+            #     "type": "video",
+            #     "video_id": self.video_id
+            # },
             {
                 "type": "text",
                 "content": self.description
