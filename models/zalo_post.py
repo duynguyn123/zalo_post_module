@@ -31,7 +31,7 @@ class ZaloPost(models.Model):
 
     # model gốc
     schedule_date = fields.Datetime(string="Scheduled Date", help="Choose the date and time to schedule the post.")
-    is_post_to_zalo = fields.Boolean("Post to Zalo", default=False)
+    is_post_to_zalo = fields.Boolean("Post now", default=False)
     cover_url = fields.Char(string='Cover URL',compute="_depend_cover_url")
     is_posted = fields.Boolean(string="Is Post")
     have_video = fields.Boolean('Have Video', default=False)
