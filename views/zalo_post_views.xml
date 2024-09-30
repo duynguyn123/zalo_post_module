@@ -20,7 +20,7 @@
                     <!-- <button name="action_post_feed" type="object" string="Post to Zalo" class="oe_highlight"/> -->
                      <!-- Replacing button with a checkbox -->
                     <group>
-                        <field name="is_post_to_zalo" string="Post to Zalo"/>
+                        <field name="is_post_to_zalo" string="Post now"/>
                         <field name="have_video" />
                     </group>
                     <notebook>                 
@@ -50,7 +50,7 @@
                 <field name="description"/>
                 <field name="schedule_date" widget="datetime" />
                 <field name="is_posted"/>
-                <button name="action_post_feed" type="object" string="Post to Zalo now" class="oe_highlight"/>
+                <button name="action_post_feed" type="object" string="Post now" class="oe_highlight"/>
             </tree>
         </field>
     </record>

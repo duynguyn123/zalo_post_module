@@ -1,11 +1,5 @@
 <odoo>
     <data>
-        <!-- Root menu -->
-        <menuitem 
-            id="menu_zalo_marketing_root" 
-            name="Zalo Marketing" 
-            sequence="0"
-        />
 
         <!-- Submenu under MarketingContent.menu_config -->
         <menuitem 
@@ -14,22 +8,8 @@
             name="Zalo Manager"
         />
 
-        <!-- Posts menu -->
-        <menuitem
-            id="menu_zalo_post"
-            parent="menu_zalo_marketing_root" 
-            name="Posts" 
-            sequence="20" 
-            action="action_zalo_post"
-        />
 
-        <!-- Config menu -->
-        <menuitem
-            id="menu_zalo_config"
-            parent="menu_zalo_marketing_root" 
-            name="Config" 
-            sequence="30"
-        />
+
 
         <!-- Submenu under zalo_group -->
         <menuitem 
@@ -59,7 +39,7 @@
 
         <menuitem
             id="menu_zalo_postv2"
-            parent="zalo_group" 
+            parent="MarketingContent.menu_post" 
             name="Manager Zalo Post" 
             sequence="43" 
             action="action_zalo_post"
