@@ -16,7 +16,7 @@ class ZaloAccount(models.Model):
     description = fields.Char('Description')
     cate_name = fields.Char('Danh mục')
     num_follower = fields.Char('Follower')
-    avatar_url = fields.Char('Account Image')
+    avatar_url = fields.Binary('Account Image')
     package_name = fields.Char('Package Name')
 
 
