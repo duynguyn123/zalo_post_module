@@ -27,6 +27,17 @@
             </xpath>
         </field>
     </record>
-
+    <!-- <record id="inherited_module_form_viewv3" model="ir.ui.view">
+        <field name="name">inherited.module.form.viewv3</field>
+        <field name="model">zalo.post</field>
+        <field name="inherit_id" ref="zalo_post_module.view_zalo_post_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet//div[1]" position="inside">
+                <notebook>
+                    
+                </notebook>
+            </xpath>
+        </field>
+    </record> -->
 
 </odoo>

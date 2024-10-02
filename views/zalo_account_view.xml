@@ -27,13 +27,12 @@
 
 
     <record id="manager_account_kanban" model="ir.ui.view">
-        <field name="name">manager.account.kanban</field>
+        <field name="name">zalo.account.kanban</field>
         <field name="model">zalo.account</field>
         <field name="arch" type="xml">
             <kanban>
                 <field name="id"/>
                 <field name="name"/>
-                <field name="avatar_url"/>
                 <field name="is_favorite"/>
                 <templates>
                     <t t-name="kanban-box">
@@ -55,13 +54,6 @@
             </kanban>
         </field>
     </record>
-
-
-
-    
-
-
-
 
 
 
