@@ -20,7 +20,7 @@ class ZaloVideo(models.Model):
 
     # Model gốc
     video_file = fields.Binary('Video File', required=False)  # Optional if video is not selected
-    name = fields.Char('File Name', required=True)
+    video_name = fields.Char('File Name', required=True)
     videoToken = fields.Char('Video Token')
     video_id = fields.Char('Video ID')
 
@@ -39,7 +39,7 @@ class ZaloVideo(models.Model):
                 'access_token': self.access_token,
             },
             files={
-                'file': (self.name,file, 'video/mp4')
+                'file': (self.video_name,file, 'video/mp4')
             }
         )
         # Kiểm tra kết quả trả về

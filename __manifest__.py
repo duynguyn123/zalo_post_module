@@ -12,7 +12,7 @@
         'data/cron_post_feed.xml',
         'views/zalo_app_view.xml',
         'views/zalo_account_view.xml',
-        'views/zalo_post_video.xml',
+        # 'views/zalo_post_video.xml',
         'views/inherit_marketing_content.xml',
         'security/ir.model.access.csv',
 

@@ -12,13 +12,13 @@
 
 
         <!-- Submenu under zalo_group -->
-        <menuitem 
+        <!-- <menuitem 
             id="menu_zalo_video" 
             name="Prepare Video Zalo" 
             parent="zalo_group" 
             action="action_zalo_video"
             sequence="41"
-        />
+        /> -->
 
         <menuitem 
             id="menu_zalo_app" 
