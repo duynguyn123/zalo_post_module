@@ -9,11 +9,16 @@ class MarketingContent(models.Model):
 
 
 
-# Kế thừa Marketing Product
-class MarketingProduct(models.Model):
-    _inherit="marketing.product"
 
-    zalo_post = fields.One2many("zalo.post","marketing_product_id",string="Zalo post")
+
+
+class YourModel(models.Model):
+    _name = 'your.model'
+    _inherit = ['mail.thread', 'mail.activity.mixin']  # Enables Chatter
+
+    name = fields.Char(string="Name", tracking=True)  # 'tracking=True' logs changes to Chatter
+    description = fields.Text(string="Description", tracking=True)
+    zalo_post = fields.One2many('zalo.post', 'youmodel')
 
 
 

@@ -55,6 +55,10 @@ class ZaloAccount(models.Model):
         self.avatar_url = info['data']['avatar']
         self.num_follower = info['data']['num_follower']
         self.package_name = info['data']['package_name']
+        if self.zalo_app:
+            zalo_app = self.env["zalo.app"].write({
+                "name": self.name,
+            })
         return info
     
 

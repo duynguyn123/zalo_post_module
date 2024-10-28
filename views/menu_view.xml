@@ -39,10 +39,35 @@
 
         <menuitem
             id="menu_zalo_postv2"
-            parent="MarketingContent.menu_post" 
+            parent="MarketingContent.menu_root" 
             name="Manager Zalo Post" 
             sequence="43" 
             action="action_zalo_post"
         />
+        <!-- <menuitem id="menu_your_model" 
+        name="Your Model"
+        parent="MarketingContent.menu_root"  
+        action="action_your_model"
+         sequence="10"
+         /> -->
+         <menuitem id="menu_video" 
+            name="Zalo Manager Video"
+            parent="zalo_group"  
+            action="action_zalo_video"
+            sequence="10"
+         />
+         <menuitem id="menu_schedule" 
+            name="Zalo Post Schedule"
+            parent="zalo_group"  
+            action="action_zalo_schedule"
+            sequence="10"
+         />
+        <menuitem id="menu_schedule" 
+            name="Zalo Video Converted"
+            parent="zalo_group"  
+            action="action_zalo_video_converted"
+            sequence="10"
+         />
+
     </data>
 </odoo>

@@ -68,12 +68,6 @@ class ZaloAccount(models.Model):
             if now - record.token_expiration >= expiration_duration:
                 # Log cho biết token hết hạn
                 _logger.warning(f"Token for account {record.name} has expired.")
-                # You can send notifications or trigger an email here
-                self.env.user.notify_info(
-                    message=f"Token for account {record.name} has expired.",
-                    title="Warning",
-                    sticky=True
-                )
                 # Optionally, call action_token_new() to refresh the token automatically
                 record.action_token_new()
 

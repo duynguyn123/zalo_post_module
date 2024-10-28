@@ -6,19 +6,12 @@
             <form string="Zalo video">
                 <sheet>
                     <group>
-                        <field name="video_file"/>
-                        <field name="name"/>
-                        <field name="video_id"/>
-                        <field name="videoToken"></field>
+                        <field name="zalo_post"/>
                     </group>
                     <group>
-                        <field name="zalo_app_id"/>
-                        <!-- <field name="app_id"/>
-                        <field name="app_secret"/>
-                        <field name="token_expiration"/> -->
                     </group>
-                    <button string="Upload Video" type="object" name="action_upload_video" class="btn-primary "/>
-                    <button string="Verify Video" type="object" name="action_verify_video" class="btn-warning"/>
+                    <!-- <button string="Upload Video" type="object" name="action_upload_video" class="btn-primary "/> -->
+                    <!-- <button string="Verify Video" type="object" name="action_verify_video" class="btn-warning"/> -->
 
 
                 </sheet>
@@ -32,9 +25,12 @@
         <field name="model">zalo.video</field>
         <field name="arch" type="xml">
             <tree string="Zalo Video">
-                <field name="video_file"/>
-                <field name="name"/>
-                <field name="video_id"/>
+                <field name="zalo_post" />
+                <field name="video_name" />
+                <field name="videoToken" />
+                <field name="video_id" />
+                <field name="status" />
+                
             </tree>
         </field>
     </record>
@@ -49,6 +45,7 @@
                 Hãy thêm một videooo
             </p>
         </field>
+        <!-- <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'tree', 'view_id': ref('view_zalo_video_tree')}), (0, 0, {'view_mode': 'form', 'view_id': ref('view_zalo_video_form')})]"/> -->
     </record>
 
     <!-- Define the menu item for Zalo Posts -->

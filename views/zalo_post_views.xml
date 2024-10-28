@@ -9,8 +9,11 @@
                         <div class="col-6">
                             <group>
                                 <field name="cover_url"/>
-                                <field name="have_video" />
-                                <field name="video_type" invisible="have_video" />
+
+                                <field name="no_video" />
+                                <field name="video_type" invisible="no_video" />
+                                <field name="post_status" />
+
                             </group>
                         </div>
                         <div class="col-6">
@@ -27,7 +30,7 @@
                     
 
                     <notebook>                 
-                        <page name="videoPost" string="Chose Video" invisible="have_video" >
+                        <page name="videoPost" string="Chose Video" invisible="no_video" >
                             <group>
                                 <field name="video_file" filename="file_name" />
                                 <field name="video_name" filename="file_name" />
@@ -37,7 +40,8 @@
                             <group>
                                 <field name="zalo_app_id"/>
                             </group>
-                            <button string="Up Video" type="object" name="action_upload_and_verify_video" class="btn-warning"/>
+                            <!-- <button string="Up Video" type="object" name="action_upload_and_verify_video" class="btn-warning"/> -->
+                            <!-- <button string="Up Video" type="object" name="prepare_video_upload" class="btn-warning"/> -->
 
                         </page>
 
@@ -54,11 +58,12 @@
         <field name="model">zalo.post</field>
         <field name="arch" type="xml">
             <tree string="Zalo Posts">
-                <field name="name"/>
-                <field name="description"/>
+                <field name="content_id"/>
+                <!-- <field name="description"/> -->
                 <field name="schedule_date" widget="datetime" />
-                <field name="is_posted"/>
-                <button name="action_post_feed" type="object" string="Post now" class="oe_highlight"/>
+                <!-- <field name="is_posted"/> -->
+                <field name="post_status" />
+                <!-- <button name="action_post_feed" type="object" string="Post now" class="oe_highlight"/> -->
             </tree>
         </field>
     </record>
