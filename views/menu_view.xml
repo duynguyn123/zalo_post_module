@@ -1,25 +1,23 @@
 <odoo>
     <data>
+        
+        <!-- Inherit Menu Root -->
+        <menuitem
+            id="menu_zalo_postv2"
+            parent="MarketingContent.menu_root" 
+            name="Zalo Marketing" 
+            sequence="43" 
+            action="action_zalo_post"
+        />
 
-        <!-- Submenu under MarketingContent.menu_config -->
+        <!-- Submenu -->
         <menuitem 
             id="zalo_group" 
-            parent="MarketingContent.menu_config"
+            parent="menu_zalo_postv2"
             name="Zalo Manager"
         />
 
-
-
-
-        <!-- Submenu under zalo_group -->
-        <!-- <menuitem 
-            id="menu_zalo_video" 
-            name="Prepare Video Zalo" 
-            parent="zalo_group" 
-            action="action_zalo_video"
-            sequence="41"
-        /> -->
-
+        <!-- Manager Zalo app -->
         <menuitem 
             id="menu_zalo_app" 
             name="Manager Zalo App" 
@@ -28,7 +26,7 @@
             sequence="40"
         />
 
-        <!-- Correct or remove the group attribute -->
+        <!-- Manager Zalo Account -->
         <menuitem 
             id="menu_zalo_account" 
             name="Manager Zalo Account" 
@@ -37,35 +35,34 @@
             sequence="40"
         />
 
-        <menuitem
-            id="menu_zalo_postv2"
-            parent="MarketingContent.menu_root" 
-            name="Manager Zalo Post" 
-            sequence="43" 
-            action="action_zalo_post"
-        />
-        <!-- <menuitem id="menu_your_model" 
-        name="Your Model"
-        parent="MarketingContent.menu_root"  
-        action="action_your_model"
-         sequence="10"
-         /> -->
+        <!-- Manager Zalo Video -->
          <menuitem id="menu_video" 
             name="Zalo Manager Video"
             parent="zalo_group"  
             action="action_zalo_video"
             sequence="10"
          />
+
+         <!-- Manager Post Schedule -->
          <menuitem id="menu_schedule" 
             name="Zalo Post Schedule"
             parent="zalo_group"  
             action="action_zalo_schedule"
             sequence="10"
          />
-        <menuitem id="menu_schedule" 
+
+        <!-- Manager Video Being Converted -->
+        <menuitem id="video_convert" 
             name="Zalo Video Converted"
             parent="zalo_group"  
             action="action_zalo_video_converted"
+            sequence="10"
+         />
+
+        <menuitem id="manager_zalo_post" 
+            name="Zalo Post"
+            parent="zalo_group"  
+            action="action_zalo_post"
             sequence="10"
          />
 

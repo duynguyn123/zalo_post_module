@@ -1,4 +1,3 @@
-from urllib.parse import urlencode
 import requests
 from odoo import models, fields, _, api # type: ignore
 import logging

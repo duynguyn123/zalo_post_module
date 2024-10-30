@@ -14,7 +14,6 @@
         'data/cron_video_verify.xml',
         'views/zalo_app_view.xml',
         'views/zalo_account_view.xml',
-        'views/you_model.xml',
         'views/zalo_post_video.xml',
         'views/zalo_schedule.xml',
         'views/zalo_video_converted.xml',

@@ -9,43 +9,44 @@
                         <div class="col-6">
                             <group>
                                 <field name="cover_url"/>
-
                                 <field name="no_video" />
                                 <field name="video_type" invisible="no_video" />
                                 <field name="post_status" />
-
+                                <field name="post_message_respond" options="{'color': 'red'}" readonly="1" />
                             </group>
                         </div>
                         <div class="col-6">
                             <group>
                                 <field name="zalo_app_id"/>
                                 <field name="zalo_account"/>
-                                
                                 <field name="schedule_date" widget="datetime" invisible="is_post_to_zalo" />
                                 <field name="is_post_to_zalo" string="Post now"/>
+                                <field name="is_posted" readonly="1" />
+
                             </group>
                         </div>
                     </div>
                     
-                    
-
                     <notebook>                 
                         <page name="videoPost" string="Chose Video" invisible="no_video" >
+                        <div class="row">
+                            <div class="col-6">
+                                <group>
+                                    <field name="video_file" filename="file_name" />
+                                    <field name="video_name" filename="file_name" />
+                                </group>
+                            </div>
+                            <div class="col-6">
+                                <group>
+                                    <field name="status" />
+                                    <field name="zalo_app_id"/>
+                                </group>
+                            </div>
+                        </div>
                             <group>
-                                <field name="video_file" filename="file_name" />
-                                <field name="video_name" filename="file_name" />
-                                <field name="status" />
-
+                                <field name="video_message_respond"  readonly="1" />
                             </group>
-                            <group>
-                                <field name="zalo_app_id"/>
-                            </group>
-                            <!-- <button string="Up Video" type="object" name="action_upload_and_verify_video" class="btn-warning"/> -->
-                            <!-- <button string="Up Video" type="object" name="prepare_video_upload" class="btn-warning"/> -->
-
                         </page>
-
-
                     </notebook>
                 </sheet>
             </form>
@@ -59,11 +60,8 @@
         <field name="arch" type="xml">
             <tree string="Zalo Posts">
                 <field name="content_id"/>
-                <!-- <field name="description"/> -->
                 <field name="schedule_date" widget="datetime" />
-                <!-- <field name="is_posted"/> -->
                 <field name="post_status" />
-                <!-- <button name="action_post_feed" type="object" string="Post now" class="oe_highlight"/> -->
             </tree>
         </field>
     </record>
@@ -80,5 +78,4 @@
         </field>
     </record>
 
-    <!-- Define the menu item for Zalo Posts -->
 </odoo>
