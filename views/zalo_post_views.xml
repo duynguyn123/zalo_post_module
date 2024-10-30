@@ -9,7 +9,8 @@
                         <div class="col-6">
                             <group>
                                 <field name="cover_url"/>
-                                <field name="no_video" />
+                                
+				<!-- <field name="no_video" /> -->
                                 <field name="video_type" invisible="no_video" />
                                 <field name="post_status" />
                                 <field name="post_message_respond" options="{'color': 'red'}" readonly="1" />
