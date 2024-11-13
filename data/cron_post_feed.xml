@@ -6,8 +6,8 @@
             <field name="model_id" ref="model_zalo_post" /> <!-- Reference the model zalo.post -->
             <field name="state">code</field>
             <field name="code">model.schedule_post_feed()</field> <!-- Call the method schedule_post_feed -->
-            <field name="interval_number">1</field> <!-- Runs every 1 hour -->
-            <field name="interval_type">hours</field> <!-- Interval type (hours) -->
+            <field name="interval_number">5</field> <!-- Runs every 1 hour -->
+            <field name="interval_type">minutes</field> <!-- Interval type (hours) -->
             <field name="numbercall">-1</field> <!-- Unlimited execution -->
             <field name="active">True</field>
         </record>

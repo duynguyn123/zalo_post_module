@@ -7,11 +7,16 @@
     'category': 'Social',
     'depends': ['base','website_sale','MarketingContent'],
     'data': [
-        # 'security/security.xml',
+        
         'views/zalo_post_views.xml',
+
         'data/cron_new_token.xml',
+
         'data/cron_post_feed.xml',
-        'data/cron_video_verify.xml',
+
+        # Tạm thời tắt auto verify video
+        # 'data/cron_video_verify.xml',
+
         'views/zalo_app_view.xml',
         'views/zalo_account_view.xml',
         'views/zalo_post_video.xml',

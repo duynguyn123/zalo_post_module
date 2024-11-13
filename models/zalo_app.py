@@ -9,6 +9,7 @@ from datetime import timedelta
 class ZaloAccount(models.Model):
     _name = 'zalo.app'
     _description = 'Zalo App'
+    
     is_favorite = fields.Boolean(string="Favorite", default=False, tracking=True)
     name = fields.Char('Tên tài khoản', required=True)
     app_id = fields.Char('App ID', required=True)
@@ -17,6 +18,7 @@ class ZaloAccount(models.Model):
     refresh_token = fields.Char('Refresh Token')
     token_expiration = fields.Datetime('Token Expiration')
     image_app = fields.Binary('Image App')
+
 
     zalo_account_id = fields.Many2one('zalo.account')
 
